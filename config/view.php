@@ -19,6 +19,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | View Storage Paths(user interface)
+    |--------------------------------------------------------------------------
+    */
+    'backend_path' => realpath( base_path( 'app/UserInterface/Backend/views' ) ),
+    'frontend_path' => realpath( base_path( 'app/UserInterface/Frontend/views' ) ),
+
+    /*
+    |--------------------------------------------------------------------------
     | Compiled View Path
     |--------------------------------------------------------------------------
     |

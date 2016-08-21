@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'backend',
+        'passwords' => 'backend',
     ],
 
     /*
@@ -36,11 +36,14 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'backend' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'backend',
         ],
-
+        'frontend' => [
+            'driver' => 'session',
+            'provider' => 'frontend',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -65,15 +68,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'backend' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Infrastructure\Eloquent\BackendUser::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'frontend' => [
+            'driver' => 'eloquent',
+            'model' => App\Infrastructure\Eloquent\FrontendUser::class,
+        ],
     ],
 
     /*
@@ -96,10 +99,16 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'backend' => [
+            'provider' => 'backend',
             'email' => 'auth.emails.password',
-            'table' => 'password_resets',
+            'table' => 'backend_password_resets',
+            'expire' => 60,
+        ],
+        'frontend' => [
+            'provider' => 'frontend',
+            'email' => 'auth.emails.password',
+            'table' => 'frontend_password_resets',
             'expire' => 60,
         ],
     ],
