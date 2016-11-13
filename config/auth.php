@@ -70,12 +70,12 @@ return [
     'providers' => [
         'backend' => [
             'driver' => 'eloquent',
-            'model' => App\Infrastructure\Eloquent\BackendUser::class,
+            'model' => App\Domain\BackendUser::class,
         ],
 
         'frontend' => [
             'driver' => 'eloquent',
-            'model' => App\Infrastructure\Eloquent\FrontendUser::class,
+            'model' => App\Domain\FrontendUser::class,
         ],
     ],
 

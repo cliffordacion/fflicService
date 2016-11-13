@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Infrastructure\Eloquent;
+namespace App\Domain;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class FrontendUser extends Authenticatable
+class BackendUser extends Authenticatable
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'frontend_users';
+    protected $table = 'backend_users';
 
 	 /**
      * The attributes that are mass assignable.

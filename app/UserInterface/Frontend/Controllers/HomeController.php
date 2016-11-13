@@ -23,13 +23,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (\Auth::check()) {
             // The user is logged in...
+
+            $user = $request->user(); //Get current user
+            if($user->hasCurrentRequest()) {
+                $currentRequest = $user->getCurrentRequest();
+                // dd($currentRequest->isInProgress());
+                return view('requestProgress', ['currentRequest' => $currentRequest]);
+            }
             return view('home');
         }
-
         return view('welcome');
     }
 }

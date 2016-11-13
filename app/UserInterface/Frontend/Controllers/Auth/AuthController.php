@@ -2,7 +2,7 @@
 
 namespace App\UserInterface\Frontend\Controllers\Auth;
 
-use App\Infrastructure\Eloquent\FrontendUser;
+use App\Domain\FrontendUser;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
