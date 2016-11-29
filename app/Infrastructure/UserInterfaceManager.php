@@ -35,7 +35,6 @@ class UserInterfaceManager
     {
         $matches = null;
         $regEx = '/^(http|https):\/\/(' . getenv('HOST_NAME') . '\/\S+?)(\/|\z)/';
-        dd($regEx);
         if (preg_match($regEx, $this->requestUrl, $matches)) {
             if (! empty($matches) && count($matches) > 0) {
                 switch ($matches[2]) {

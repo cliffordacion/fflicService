@@ -36,7 +36,6 @@ class UserInterfaceMiddleware
      */
     public function handle($request, Closure $next)
     {
-        dd('Superman');
         $userInterfaceName = $this->userInterfaceManager->getUserInterfaceNameFromRequest($request);
         $app = app();
         $this->userInterfaceManager->prepareUserInterface($userInterfaceName, $app, $this->view);
