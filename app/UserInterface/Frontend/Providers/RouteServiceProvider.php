@@ -37,7 +37,7 @@ class RouteServiceProvider extends ServiceProvider
                 $router->group(
                     [
                     'namespace' => 'App\UserInterface\Frontend\Controllers',
-                    'domain' => config('userinterface.frontend_domain')
+                    'domain' => config('userInterface.frontend_domain')
                     ],
                     function ($router) {
                         include app_path('UserInterface/Frontend/routes.php');
