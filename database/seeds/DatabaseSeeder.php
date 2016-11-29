@@ -11,7 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call('BackendUserSeeder');
         $this->call('FrontendUserSeeder');
-        $this->command->info('FrontendUser table seeded!');
+        $this->call('TransactionRequestSeeder');
     }
 }

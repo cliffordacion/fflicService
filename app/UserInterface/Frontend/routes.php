@@ -28,6 +28,9 @@
 
 			//Profile
 			Route::get('/profile', ['uses' => 'FrontendUserController@profile']);
+			Route::get('/profile/update', ['uses' => 'FrontendUserController@profileUpdate']);
+			Route::post('/profile/save', ['uses' => 'FrontendUserController@profileSave']);
+			Route::post('/profile/saveId', ['uses' => 'FrontendUserController@profileSaveId']);
 
 		}
 	);

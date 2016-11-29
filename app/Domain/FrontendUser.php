@@ -21,7 +21,7 @@ class FrontendUser extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'id', 'name', 'email', 'password', 'course', 'college', 'mobileNumber', 'id_image_front', 'id_image_back'
     ];
 
     /**

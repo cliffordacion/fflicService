@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Domain\TransactionRequests;
 
-class HomeController extends Controller
+class RequestController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,16 +24,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showRequest($id)
     {
         if (\Auth::check()) {
             // The user is logged in...
-
-
-            $transactionRequests = TransactionRequests::InProgressCollection();
-               // dd($transactionRequests);
-            // dd($transactionRequests);
-            return view('home', ['transactionRequests' => $transactionRequests]);
+            $transactionRequest = TransactionRequests::where('id', $id)->first();
+            return view('showRequest', compact('transactionRequest'));
         }
 
         return view('welcome');

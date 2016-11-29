@@ -48,6 +48,13 @@ class TransactionRequests extends Model
         self::STATUS_CANCELLED => 'Cancelled'
     ];
 
+    const IN_PROGRESS_STATUS = [
+        self::STATUS_VALIDATING => 'Validating',
+        self::STATUS_PROCESSING => 'Processing',
+        self::STATUS_IN_TRANSIT => 'In Transit',
+        self::STATUS_DELIVERED => 'Delivered',
+    ];
+
 /**
 * Custom Function Goes Here
 */
@@ -87,13 +94,13 @@ class TransactionRequests extends Model
 
     public function isInProgress()
     {
-        // dd($this->status);
-        return in_array($this->status, [
-                TransactionRequests::STATUS_VALIDATING,
-                TransactionRequests::STATUS_PROCESSING,
-                TransactionRequests::STATUS_IN_TRANSIT,
-                TransactionRequests::STATUS_DELIVERED
-            ]);
+        return array_key_exists($this->status, self::IN_PROGRESS_STATUS);
+    }
+
+    public function isNew()
+    {
+        // dd($this->status === self::STATUS_VALIDATING);
+        return $this->status === self::STATUS_VALIDATING;
     }
 
     public function isInTransit()
@@ -141,5 +148,20 @@ class TransactionRequests extends Model
     {
         $this->remarks = 'Transaction Failure Confirmation';
         $this->status = self::STATUS_COMPLETED;
+    }
+
+    public static function InProgressCollection()
+    {
+        $transactionRequestCollection = self::whereIn('status', array_keys(self::IN_PROGRESS_STATUS))
+            ->get();
+        return $transactionRequestCollection;
+    }
+
+    /**
+     * Get the frontendUser that owns the request.
+     */
+    public function frontendUser()
+    {
+        return $this->belongsTo('App\Domain\FrontendUser', 'frontendUser_id');
     }
 }

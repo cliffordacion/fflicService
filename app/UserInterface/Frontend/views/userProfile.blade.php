@@ -10,55 +10,61 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Sheena Shrestha</h3>
+              <h3 class="panel-title">User Profile</h3>
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
-                <div class=" col-md-9 col-lg-12 "> 
+                 <div class=" col-md-9 col-lg-12 "> 
                   <table class="table table-user-information">
+
+                    <div class="col-md-12 col-lg-12 col-md-offset-3 col-lg-offset-3" align="center" style="">
+                      <div class="col-md-3 col-lg-3 " align="center"> 
+                        <div>ID Front Image:</div>
+                        <img alt="User Pic" src="{{ url($user->id_image_front) }}" class="img-responsive" style="width:304px;height:228px;"> 
+                      </div>
+                      <div class="col-md-3 col-lg-3 " align="center"> 
+                        <div>ID Back Image:</div>
+                        <img alt="User Pic" src="{{ url($user->id_image_back) }}" class="img-responsive" style="width:304px;height:228px;"> 
+                      </div>
+                    </div>
+
+                    <div style="padding-top:20px"><h3>Profile<hr><h3></div>
+                    
                     <tbody>
                       <tr>
-                        <td>Department:</td>
-                        <td>Programming</td>
+                        <td>Name:</td>
+                        <td>{{ $user->name }}</td>
                       </tr>
                       <tr>
-                        <td>Hire date:</td>
-                        <td>06/23/2013</td>
+                        <td>Student Number:</td>
+                        <td>{{ $user->id }}</td>
                       </tr>
                       <tr>
-                        <td>Date of Birth</td>
-                        <td>01/24/1988</td>
+                        <td>Email Address:</td>
+                        <td>{{ $user->email }}</td>
                       </tr>
-                   
-                         <tr>
-                             <tr>
-                        <td>Gender</td>
-                        <td>Female</td>
+                      <tr>
+                        <td>Course:</td>
+                        <td>{{ $user->course }}</td>
                       </tr>
                         <tr>
-                        <td>Home Address</td>
-                        <td>Kathmandu,Nepal</td>
+                        <td>College</td>
+                        <td>{{ $user->college }}</td>
                       </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td><a href="mailto:info@support.com">info@support.com</a></td>
-                      </tr>
-                        <td>Phone Number</td>
-                        <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
+                        <td>Mobile Number</td>
+                        <td>{{ $user->mobileNumber }}
                         </td>
                            
                       </tr>
                      
                     </tbody>
                   </table>
-                </div>
+                </div>               
               </div>
             </div>
                  <div class="panel-footer">
                     <div align="right">
-                        <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        <a href="{{ url('/frontend/profile/update') }}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Edit</a>
                     </div>   
                 </div>
             

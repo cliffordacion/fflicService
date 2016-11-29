@@ -13,12 +13,14 @@ class CreateFrontendUsersTable extends Migration
     public function up()
     {
         Schema::create('frontend_users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id')->unique();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('course');
             $table->string('college');
-            $table->string('studentNumber');
+            $table->string('mobileNumber');
+            $table->string('id_image_front');
+            $table->string('id_image_back');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
