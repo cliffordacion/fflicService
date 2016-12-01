@@ -28,10 +28,9 @@ class HomeController extends Controller
         if (\Auth::check()) {
             // The user is logged in...
 
-            $user = $request->user(); //Get current user
+            $user = \Auth::user(); //Get current user
             if($user->hasCurrentRequest()) {
                 $currentRequest = $user->getCurrentRequest();
-                // dd($currentRequest->isInProgress());
                 return view('requestProgress', ['currentRequest' => $currentRequest]);
             }
             return view('home');

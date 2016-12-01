@@ -178,3 +178,24 @@ VALUES(
   NEW.created_at,
   NEW.updated_at
 );
+
+
+### Insert Default Values here
+
+#Frontend Users
+INSERT INTO `frontend_users` (`id`, `name`, `email`, `course`, `college`, `mobileNumber`, `id_image_front`, `id_image_back`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'French Clifford dacion', 'cliffordzen_143@yahoo.co.uk', 'Library Science', 'School of library and information studies', '0987654321', 'id/cliff.jpg', 'id/cliff.jpg', '$2y$10$a2.bqgmtQnlElkrP87Qy6up0WjMRW3hcv4niWokcTFOQ7x5UJYOoC', NULL, '2016-06-21 00:28:47', '2016-06-21 00:28:47'),
+(2, 'Salve Lyne De Vera', 'salve@yahoo.co.uk', 'BS Biology', 'College of Science', '0987654321', 'id/cliff.jpg', 'id/cliff.jpg', '$2y$10$a2.bqgmtQnlElkrP87Qy6up0WjMRW3hcv4niWokcTFOQ7x5UJYOoC', NULL, '2016-06-21 00:28:47', '2016-06-21 00:28:47'),
+(3, 'Frank Kenneth Dacion', 'ken@yahoo.co.uk', 'Nursing', 'College of Health Studies', '0987654321', 'id/cliff.jpg', 'id/cliff.jpg', '$2y$10$a2.bqgmtQnlElkrP87Qy6up0WjMRW3hcv4niWokcTFOQ7x5UJYOoC', NULL, '2016-06-21 00:28:47', '2016-06-21 00:28:47');
+
+
+#Backend Users
+INSERT INTO `backend_users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'cliff', 'cliffordzen_143@yahoo.co.uk', '$2y$10$a2.bqgmtQnlElkrP87Qy6up0WjMRW3hcv4niWokcTFOQ7x5UJYOoC', NULL, '2016-06-21 00:28:47', '2016-06-21 00:28:47');
+
+
+#Temporary transactions for testing
+INSERT INTO `transaction_requests` (`id`, `frontendUser_id`, `type`, `accessionNumber1`, `accessionNumber2`, `accessionNumber3`, `accessionNumber4`, `accessionNumber5`, `address`, `bookingSpecifics`, `latitude`, `longitude`, `status`, `remarks`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'testing LG Choch', 'testing LG Choch1', 'testing LG Choch2', NULL, NULL, '15 Rd 5, Project 6, Quezon City, 1105 Metro Manila, Philippines', 'tabi tabi lang', 14.6607140000000000, 121.0326874000000100, 0, 'Loan Request', '2016-06-21 00:28:47', '2016-06-21 00:28:47'),
+(2, 2, 1, 'testing LG Choch', 'testing LG Choch1', 'testing LG Choch2', NULL, NULL, '15 Rd 5, Project 6, Quezon City, 1105 Metro Manila, Philippines', 'tabi tabi lang', 14.6607140000000000, 121.0326874000000100, 0, 'Loan Request', '2016-06-21 00:28:47', '2016-06-21 00:28:47'),
+(3, 3, 1, 'testing LG Choch', 'testing LG Choch1', 'testing LG Choch2', NULL, NULL, '15 Rd 5, Project 6, Quezon City, 1105 Metro Manila, Philippines', 'tabi tabi lang', 14.6607140000000000, 121.0326874000000100, 2, 'Loan Request', '2016-06-21 00:28:47', '2016-06-21 00:28:47');
