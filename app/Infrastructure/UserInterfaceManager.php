@@ -65,7 +65,7 @@ class UserInterfaceManager
         $app->bind(
             'path.public',
             function () use ($userInterfaceName) {
-                return base_path().'/public/'. $userInterfaceName;
+                return base_path().'/public_html/'. $userInterfaceName;
             }
         );
     }
