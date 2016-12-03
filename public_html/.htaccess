@@ -4,6 +4,7 @@
     </IfModule>
 
     RewriteEngine On
+    Options +FollowSymLinks
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -17,4 +18,8 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    #Rewrite to www
+    #RewriteCond %{HTTP_HOST} ^ilibookdelivery.com[nc]
+    #RewriteRule ^(.*)$ http://www.ilibookdelivery.com/$1 [r=301,nc]
 </IfModule>

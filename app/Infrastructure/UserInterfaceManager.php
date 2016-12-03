@@ -45,7 +45,7 @@ class UserInterfaceManager
                 }
             }
         }
-        return ''; //unknown interface
+        return config('userInterface.frontend_userInterface_name');
     }
 
     public function prepareUserInterface(string $userInterfaceName, \Illuminate\Foundation\Application $app, \Illuminate\View\Factory $view)

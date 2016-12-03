@@ -1,8 +1,14 @@
 <?php
+
+	Route::get('/', function () {
+	    return redirect()->route('frontend_home');
+	    //return view('welcome');
+	});
 	Route::group(
 	    [ 'prefix' => '/frontend'],
 	    function () {
-			Route::get('/', 'HomeController@index');
+			Route::get('/', 'HomeController@index')
+				->name('frontend_home');
 
 			Route::get('/home', 'HomeController@index');
 			
@@ -34,3 +40,5 @@
 
 		}
 	);
+
+

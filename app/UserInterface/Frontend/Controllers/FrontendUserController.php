@@ -51,7 +51,7 @@ class FrontendUserController extends Controller
             $imageFileType = $idImageFile->getClientOriginalExtension();
 
             //Get the target url to store the images
-            $target_dir = base_path() . '\public\id';
+            $target_dir = base_path() . '/public_html/id';
             $target_filename =  $userId . '_' . $idImageType . '.' . $imageFileType;
             $target_file = $target_dir . '/' . $target_filename;
 

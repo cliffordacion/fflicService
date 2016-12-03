@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-	// dd('clifford');
-    return view('welcome');
+	dd('cliffordMain Route');
+    //return view('welcome');
 });
 
