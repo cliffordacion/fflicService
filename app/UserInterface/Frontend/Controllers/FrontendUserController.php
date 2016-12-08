@@ -5,6 +5,10 @@ namespace App\UserInterface\Frontend\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\UserInterface\Frontend\Requests\RegistrationRequest;
+
+use App\Domain\FrontendUserActivation;
+use App\Domain\FrontendUser;
 
 class FrontendUserController extends Controller
 {
@@ -102,5 +106,52 @@ class FrontendUserController extends Controller
                 return back();
             }
         }
+    }
+
+    public function showRegistrationForm()
+    {
+        if (\Auth::check()) {
+            return redirect()->route('frontend_home');
+        } else {
+            return view('auth.register');
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return View || Illuminate\Http\RedirectResponse
+     */
+    public function register(RegistrationRequest $request)
+    {
+        $user = FrontendUser::register($request);
+        
+        FrontendUserActivation::sendActivationMail($user); 
+
+        return redirect('frontend/login')->with('status', 'We sent you an activation code. Check your email.');
+    }
+
+
+    public function activateUser($activationLink)
+    {
+        $frontendUserActivation = new FrontendUserActivation;
+        $userActivation = $frontendUserActivation->getActivationByToken($activationLink);
+        if (isset($userActivation)) {
+            $user = FrontendUser::where('id', $userActivation->user_id)->first();
+            $user->activate();
+            $userActivation->delete();
+            return redirect('frontend/login')->with('status', 'Congratulations! Please Login with your registered credentials.');
+        }
+
+        return redirect('frontend/login')->with('status', 'Invalid activation link. Please check your email.');
+    }
+
+    /**
+     * Get the guard to be used during registration.
+     *
+     * @return string|null
+     */
+    protected function getGuard()
+    {
+        return property_exists($this, 'guard') ? $this->guard : null;
     }
 }

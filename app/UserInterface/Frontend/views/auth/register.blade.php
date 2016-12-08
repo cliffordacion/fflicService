@@ -10,6 +10,20 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/frontend/register') }}">
                         {{ csrf_field() }}
 
+                        <div class="form-group{{ $errors->has('studentId') ? ' has-error' : '' }}">
+                            <label for="studentId" class="col-md-4 control-label">Student Number</label>
+
+                            <div class="col-md-6">
+                                <input id="studentId" type="number" class="form-control" name="studentId" value="{{ old('studentId') }}">
+
+                                @if ($errors->has('studentId'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('studentId') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
@@ -61,6 +75,48 @@
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('course') ? ' has-error' : '' }}">
+                            <label for="course" class="col-md-4 control-label">Course</label>
+
+                            <div class="col-md-6">
+                                <input id="course" type="text" class="form-control" name="course" value="{{ old('course') }}">
+
+                                @if ($errors->has('course'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('course') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('college') ? ' has-error' : '' }}">
+                            <label for="college" class="col-md-4 control-label">College</label>
+
+                            <div class="col-md-6">
+                                <input id="college" type="text" class="form-control" name="college" value="{{ old('college') }}">
+
+                                @if ($errors->has('college'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('college') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('mobileNumber') ? ' has-error' : '' }}">
+                            <label for="mobileNumber" class="col-md-4 control-label">Mobile Number</label>
+
+                            <div class="col-md-6">
+                                <input id="mobileNumber" type="text" class="form-control" name="mobileNumber" value="{{ old('mobileNumber') }}">
+
+                                @if ($errors->has('mobileNumber'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('mobileNumber') }}</strong>
                                     </span>
                                 @endif
                             </div>

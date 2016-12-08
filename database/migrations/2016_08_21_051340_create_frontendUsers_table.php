@@ -22,6 +22,7 @@ class CreateFrontendUsersTable extends Migration
             $table->string('id_image_front');
             $table->string('id_image_back');
             $table->string('password');
+            $table->boolean('activated')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
