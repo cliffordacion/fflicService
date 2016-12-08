@@ -126,17 +126,23 @@ class FrontendUserController extends Controller
         $user = FrontendUser::register($request);
         
         FrontendUserActivation::sendActivationMail($user); 
-        // dd('Clifford'); 
 
         return redirect('frontend/login')->with('status', 'We sent you an activation code. Check your email.');
     }
 
 
-    public function activateUser()
+    public function activateUser($activationLink)
     {
-        $user = \App\Domain\FrontendUser::whereId(3)->first();
+        $frontendUserActivation = new FrontendUserActivation;
+        $userActivation = $frontendUserActivation->getActivationByToken($activationLink);
+        if (isset($userActivation)) {
+            $user = FrontendUser::where('id', $userActivation->user_id)->first();
+            $user->activate();
+            $userActivation->delete();
+            return redirect('frontend/login')->with('status', 'Congratulations! Please Login with your registered credentials.');
+        }
 
-        FrontendUserActivation::sendActivationMail($user);
+        return redirect('frontend/login')->with('status', 'Invalid activation link. Please check your email.');
     }
 
     /**

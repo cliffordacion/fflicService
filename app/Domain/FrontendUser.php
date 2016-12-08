@@ -10,6 +10,8 @@ class FrontendUser extends Authenticatable
     
     const ACTIVATION_FALSE = 0;
     const ACTIVATION_TRUE = 1;
+
+    public $incrementing = false;
     
     protected $currentRequest = null;
     /**
@@ -99,5 +101,11 @@ class FrontendUser extends Authenticatable
         $user->save();
         
         return $user;
+    }
+
+    public function activate()
+    {
+        $this->activated = self::ACTIVATION_TRUE;
+        $this->save();
     }
 }

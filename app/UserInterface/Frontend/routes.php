@@ -23,7 +23,7 @@
 			//Frontend user registration
 			Route::get('/register', ['uses' => 'FrontendUserController@showRegistrationForm']);
 			Route::post('/register', ['uses' => 'FrontendUserController@register']);
-			Route::get('/user/activation', ['uses' => 'FrontendUserController@activateUser'])
+			Route::get('/user/activation/{activationLink}', ['uses' => 'FrontendUserController@activateUser'])
 				->name('user.activate');
 
 			//Loan a book

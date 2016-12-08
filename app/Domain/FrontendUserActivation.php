@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 class FrontendUserActivation extends Model
 {
     // protected $table = 'user_activations';
+    protected $primaryKey = 'user_id';
+
+    public $incrementing = false;
 
     public function getToken()
     {
