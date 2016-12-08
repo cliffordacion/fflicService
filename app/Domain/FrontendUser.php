@@ -7,6 +7,10 @@ use App\Domain\TransactionRequests;
 
 class FrontendUser extends Authenticatable
 {
+    
+    const ACTIVATION_FALSE = 0;
+    const ACTIVATION_TRUE = 1;
+    
     protected $currentRequest = null;
     /**
      * The table associated with the model.
@@ -21,7 +25,16 @@ class FrontendUser extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'email', 'password', 'course', 'college', 'mobileNumber', 'id_image_front', 'id_image_back'
+        'id', 
+        'name', 
+        'email', 
+        'password', 
+        'course', 
+        'college', 
+        'mobileNumber', 
+        'id_image_front', 
+        'id_image_back', 
+        'activated'
     ];
 
     /**
@@ -68,5 +81,23 @@ class FrontendUser extends Authenticatable
     public function requests()
     {
         return $this->hasMany('App\Domain\TransactionRequests', 'frontendUser_id');
+    }
+
+    public static function register($request)
+    {
+        $params = $request->all();
+
+        $user = new self;
+        $user->id = $params['studentId'];
+        $user->name = $params['name'];
+        $user->email = $params['email'];
+        $user->password = bcrypt($params['password']);
+        $user->course = $params['course'];
+        $user->college = $params['college'];
+        $user->mobileNumber = $params['mobileNumber'];
+        $user->activated = self::ACTIVATION_FALSE;
+        $user->save();
+        
+        return $user;
     }
 }

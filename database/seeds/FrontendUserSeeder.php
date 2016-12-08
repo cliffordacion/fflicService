@@ -23,6 +23,7 @@ class FrontendUserSeeder extends Seeder
             'id_image_front' => 'id/cliff.jpg',
             'id_image_back' => 'id/cliff.jpg',
             'password' => '$2y$10$a2.bqgmtQnlElkrP87Qy6up0WjMRW3hcv4niWokcTFOQ7x5UJYOoC',
+            'activated' => true,
             'created_at' => '2016-06-21 08:28:47',
             'updated_at' => '2016-06-21 08:28:47'
         ));
@@ -37,6 +38,7 @@ class FrontendUserSeeder extends Seeder
             'id_image_front' => 'id/cliff.jpg',
             'id_image_back' => 'id/cliff.jpg',
             'password' => '$2y$10$a2.bqgmtQnlElkrP87Qy6up0WjMRW3hcv4niWokcTFOQ7x5UJYOoC',
+            'activated' => true,
             'created_at' => '2016-06-21 08:28:47',
             'updated_at' => '2016-06-21 08:28:47'
         ));
@@ -52,6 +54,7 @@ class FrontendUserSeeder extends Seeder
             'id_image_back' => 'id/cliff.jpg',
             'password' => '$2y$10$a2.bqgmtQnlElkrP87Qy6up0WjMRW3hcv4niWokcTFOQ7x5UJYOoC',
             'created_at' => '2016-06-21 08:28:47',
+            'activated' => false,
             'updated_at' => '2016-06-21 08:28:47'
         ));
     }

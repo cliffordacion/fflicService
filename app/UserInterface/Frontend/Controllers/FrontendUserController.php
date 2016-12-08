@@ -5,6 +5,10 @@ namespace App\UserInterface\Frontend\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\UserInterface\Frontend\Requests\RegistrationRequest;
+
+use App\Domain\FrontendUserActivation;
+use App\Domain\FrontendUser;
 
 class FrontendUserController extends Controller
 {
@@ -102,5 +106,46 @@ class FrontendUserController extends Controller
                 return back();
             }
         }
+    }
+
+    public function showRegistrationForm()
+    {
+        if (\Auth::check()) {
+            return redirect()->route('frontend_home');
+        } else {
+            return view('auth.register');
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return View || Illuminate\Http\RedirectResponse
+     */
+    public function register(RegistrationRequest $request)
+    {
+        $user = FrontendUser::register($request);
+        
+        FrontendUserActivation::sendActivationMail($user); 
+        // dd('Clifford'); 
+
+        return redirect('frontend/login')->with('status', 'We sent you an activation code. Check your email.');
+    }
+
+
+    public function activateUser()
+    {
+        $user = \App\Domain\FrontendUser::whereId(3)->first();
+
+        FrontendUserActivation::sendActivationMail($user);
+    }
+
+    /**
+     * Get the guard to be used during registration.
+     *
+     * @return string|null
+     */
+    protected function getGuard()
+    {
+        return property_exists($this, 'guard') ? $this->guard : null;
     }
 }

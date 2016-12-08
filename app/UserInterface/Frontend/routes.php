@@ -21,8 +21,10 @@
 			Route::get('/logout', ['uses' => 'Auth\AuthController@logout']);
 
 			//Frontend user registration
-			Route::get('/register', ['uses' => 'Auth\AuthController@showRegistrationForm']);
-			Route::post('/register', ['uses' => 'Auth\AuthController@register']);
+			Route::get('/register', ['uses' => 'FrontendUserController@showRegistrationForm']);
+			Route::post('/register', ['uses' => 'FrontendUserController@register']);
+			Route::get('/user/activation', ['uses' => 'FrontendUserController@activateUser'])
+				->name('user.activate');
 
 			//Loan a book
 			Route::post('/loan', ['uses' => 'TransactionController@loan']);
