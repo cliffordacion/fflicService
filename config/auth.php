@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'frontend',
         ],
+        'courier' => [
+            'driver' => 'session',
+            'provider' => 'courier',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -77,6 +81,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Domain\FrontendUser::class,
         ],
+
+        'courier' => [
+            'driver' => 'eloquent',
+            'model' => App\Domain\Courier::class,
+        ],
     ],
 
     /*
@@ -109,6 +118,12 @@ return [
             'provider' => 'frontend',
             'email' => 'auth.emails.password',
             'table' => 'frontend_password_resets',
+            'expire' => 60,
+        ],
+        'courier' => [
+            'provider' => 'courier',
+            'email' => 'auth.emails.password',
+            'table' => 'courier_password_resets',
             'expire' => 60,
         ],
     ],

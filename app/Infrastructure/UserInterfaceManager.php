@@ -42,6 +42,8 @@ class UserInterfaceManager
                         return config('userInterface.backend_userInterface_name');
                     case config('userInterface.frontend_domain'):
                         return config('userInterface.frontend_userInterface_name');
+                    case config('userInterface.courier_domain'):
+                        return config('userInterface.courier_userInterface_name');
                 }
             }
         }

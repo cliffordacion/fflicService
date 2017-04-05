@@ -60,10 +60,14 @@
               </tbody>
             </table> 
         </div>
-        <div class="col-md-4  col-lg-4" align='center'>
-            <img src="{{ url($transactionRequest->frontendUser->id_image) }}" alt="Id" style="width:304px;height:228px; ">
-            <h4>ID Image:</h4>
-        </div>
+            <div class="col-md-4  col-lg-4" align='center'>
+                <img src="{{ url($transactionRequest->frontendUser->id_image_front) }}" alt="Id" style="width:304px;height:228px; ">
+                <h4>ID Image:</h4>
+            </div>
+            <div class="col-md-4  col-lg-4 pull-right" align='center'>
+                <img src="{{ url($transactionRequest->frontendUser->id_image_front) }}" alt="Id" style="width:304px;height:228px; ">
+                <h4>ID Image:</h4>
+            </div>
     </div>
   </div>
 </div>

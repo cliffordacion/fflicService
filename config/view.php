@@ -24,6 +24,7 @@ return [
     */
     'backend_path' => realpath( base_path( 'app/UserInterface/Backend/views' ) ),
     'frontend_path' => realpath( base_path( 'app/UserInterface/Frontend/views' ) ),
+    'courier_path' => realpath( base_path( 'app/UserInterface/Courier/views' ) ),
 
     /*
     |--------------------------------------------------------------------------

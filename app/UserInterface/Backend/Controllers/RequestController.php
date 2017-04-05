@@ -29,6 +29,7 @@ class RequestController extends Controller
         if (\Auth::check()) {
             // The user is logged in...
             $transactionRequest = TransactionRequests::where('id', $id)->first();
+            // dd($transactionRequest->frontendUser->id_image);
             return view('showRequest', compact('transactionRequest'));
         }
 

@@ -31,5 +31,9 @@ class UserInterfaceServiceProvider extends ServiceProvider
             \App::register('App\UserInterface\Frontend\Providers\RouteServiceProvider');
             \App::register('App\UserInterface\Frontend\Providers\AuthServiceProvider');
         }
+        if (file_exists(app_path('UserInterface/Courier'))) {
+            \App::register('App\UserInterface\Courier\Providers\RouteServiceProvider');
+            \App::register('App\UserInterface\Courier\Providers\AuthServiceProvider');
+        }
     }
 }
